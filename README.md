@@ -23,69 +23,92 @@ atomistic-simulation-fcc-copper-elastic-constants/
 │
 ├── Task 3.6/                           # Optional: Quadratic strain energy validation
 │
+├── env/                                # Conda/virtualenv environment (if used)
+├── ATOMISTIC.zip                       # Zipped potential/code files (backup or original)
+├── LAMMPS-64bit-stable.exe             # Windows LAMMPS installer
 └── README.md
+```
 
+---
 
-📘 Project Overview
-Simulation Tool: LAMMPS
-Postprocessing: Python (numpy, matplotlib, scipy)
-Material: FCC Copper (Cu)
-Objective: Compute C11, C12, and C44 from energy-strain relationships
+## 📘 Project Overview
 
-✅ Getting Started
-Prerequisites
-Python 3.7+
-LAMMPS installed and in your PATH
+- **Simulation Tool**: [LAMMPS](https://www.lammps.org)
+- **Postprocessing**: Python (`numpy`, `matplotlib`, `scipy`)
+- **Material**: FCC Copper (Cu)
+- **Objective**: Compute C11, C12, and C44 from energy-strain relationships
 
-Python packages:
-pip install numpy matplotlib scipy
+---
 
+## ✅ Getting Started
 
-🧪 How to Run
-Each of the C11, C12, and C44 folders contains:
+### Prerequisites
 
-Python script to generate multiple LAMMPS .in files with different strains
+- [Python 3.7+](https://www.python.org/)
+- [LAMMPS installed and in your PATH](https://lammps.org/)
+- Python packages:
+  ```bash
+  pip install numpy matplotlib scipy
+  ```
 
-A LAMMPS loop or batch runner
+---
 
-A log parser script to extract E_pair values
+## 🧪 How to Run
 
-Python code to fit energy-strain curves and compute the elastic constants
+Each of the `C11`, `C12`, and `C44` folders contains:
 
-Steps:
+1. Python script to generate multiple LAMMPS `.in` files with different strains  
+2. A LAMMPS loop or batch runner  
+3. A log parser script to extract `E_pair` values  
+4. Python code to fit energy-strain curves and compute the elastic constants
 
-Step 1: Generate strained LAMMPS inputs and run simulations
+### 🔄 Example for `C11`
+
+**Step 1**: Generate strained LAMMPS inputs and run simulations  
+```bash
 cd C11
 python C11_MultiStrain.py
+```
 
-Step 2: Parse LAMMPS log files
+**Step 2**: Parse LAMMPS log files  
+```bash
 python C11_LogReader.py
+```
 
-Step 3: Fit energy-strain curve and compute C11
+**Step 3**: Fit energy-strain curve and compute C11  
+```bash
 python C11.py
-Repeat similar steps for C12 and C44.
+```
 
-📊 Results
-Elastic constants are extracted via second derivatives of polynomial fits
+Repeat similar steps for `C12` and `C44`.
 
-Quadratic energy-strain assumption is validated in Task 3.6 folder
+---
 
-Results are compared with literature values at 0 K for verification
+## 📊 Results
 
-📚 References
-Zaiser, M. Atomistic Simulation Practical, FAU WW8
+- Elastic constants are extracted via second derivatives of polynomial fits
+- Quadratic energy-strain assumption is validated in `Task 3.6` folder
+- Results are compared with literature values at 0 K for verification
 
-Jacobsen, K. W. et al., Effective Medium Theory, Surf. Sci. 366, 394 (1996)
+---
 
-Overton & Gaffney, Elastic Constants of Copper, Phys. Rev. 98, 969 (1955)
+## 📚 References
 
-LAMMPS Documentation
+- Zaiser, M. *Atomistic Simulation Practical*, FAU WW8  
+- Jacobsen, K. W. et al., *Effective Medium Theory*, Surf. Sci. 366, 394 (1996)  
+- Overton & Gaffney, *Elastic Constants of Copper*, Phys. Rev. 98, 969 (1955)  
+- [LAMMPS Documentation](https://docs.lammps.org)
 
-🧾 License
+---
+
+## 🧾 License
+
 This project is provided for educational and academic use only.
 
-👨‍💻 Author
-Atharva Sinnarkar
-M.Sc. Computational Engineering, FAU Erlangen-Nürnberg
-📧 atharvasinnarkar@gmail.com
+---
 
+## 👨‍💻 Author
+
+**Atharva Sinnarkar**  
+M.Sc. Computational Engineering, FAU Erlangen-Nürnberg  
+📧 [atharvasinnarkar@gmail.com](mailto:atharvasinnarkar@gmail.com)
