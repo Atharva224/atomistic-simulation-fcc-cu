@@ -112,15 +112,6 @@ Repeat similar steps for `C12` and `C44`.
 
 ---
 
-## 📚 References
-
-- Zaiser, M. *Atomistic Simulation Practical*, FAU WW8  
-- Jacobsen, K. W. et al., *Effective Medium Theory*, Surf. Sci. 366, 394 (1996)  
-- Overton & Gaffney, *Elastic Constants of Copper*, Phys. Rev. 98, 969 (1955)  
-- [LAMMPS Documentation](https://docs.lammps.org)
-
----
-
 ## 🧾 License
 
 This project is provided for educational and academic use only.
