@@ -58,16 +58,7 @@ Each of the `C11`, `C12`,`C44` and `fcc/bcc/sc minimization`, folders contains:
 3. A log parser script to extract `E_pair` values  
 4. Python code to fit energy-strain curves and compute the elastic constants
 
-## 🧪 SCC Copper Lattice Minimization & Fitting
-
-The `scc_minimize` folder includes:
-
-- `sc_minimize.in`: A basic LAMMPS input script to minimize the lattice energy of simple cubic (SC) copper.
-- `sc_multiple_lattice_constants.py`: Automates LAMMPS runs across a range of SC lattice constants.
-- `sc_pair of_lattice constant-energy_from log files.py`: Extracts `E_pair` values from multiple LAMMPS log files.
-- `3_2 Curve fit for SCC.py`: Performs quadratic fitting of potential energy vs. lattice constant to estimate equilibrium values.
-
-### 🔄 Example Workflow:
+### 🔄 Example for SC:
 
 **1. Run single SC relaxation:**
 ```bash
@@ -88,11 +79,6 @@ python "sc_pair of_lattice constant-energy_from log files.py"
 ```bash
 python "3_2 Curve fit for SCC.py"
 ```
-
-Outputs include:
-- `sc_energy_vs_lattice.txt`: Raw lattice constant vs energy data.
-- `sc_quadratic_fit_highres.png`: Plot of fitted curve.
-
 
 ### 🔄 Example for `C11`
 
@@ -118,6 +104,8 @@ Repeat similar steps for `C12` and `C44`.
 
 ## 📊 Results
 
+- `sc_energy_vs_lattice.txt`: Raw lattice constant vs energy data.
+- `sc_quadratic_fit_highres.png`: Plot of fitted curve.
 - Elastic constants are extracted via second derivatives of polynomial fits
 - Quadratic energy-strain assumption is validated in `Task 3.6` folder
 - Results are compared with literature values at 0 K for verification
