@@ -1,0 +1,27 @@
+# Lattice Energy Minimization for FCC Copper
+units metal
+dimension 3
+boundary p p p
+atom_style atomic
+
+variable a equal 3.55  # Lattice constant for FCC
+lattice fcc ${a}
+region box block 0 5 0 5 0 5 units lattice
+create_box 1 box
+create_atoms 1 box
+
+# Define EAM potential for Cu
+pair_style eam
+pair_coeff * * Cu_u3.eam 
+
+# Apply box relaxation before minimization
+fix 1 all box/relax iso 0.0 vmax 0.001  
+
+# Use conjugate gradient (cg) minimization (compatible with box relaxation)
+min_style cg
+minimize 1.0e-8 1.0e-10 5000 10000
+
+# Output results
+thermo 10
+thermo_style custom step pe lx ly lz press etotal
+write_data fcc_minimized.data

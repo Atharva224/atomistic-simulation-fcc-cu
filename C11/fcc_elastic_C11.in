@@ -1,0 +1,35 @@
+# Lattice Energy Minimization for FCC Copper
+units metal
+dimension 3
+boundary p p p
+atom_style atomic
+
+variable a equal 3.61  # Use optimized lattice constant l0
+lattice fcc ${a}
+region box block 0 5 0 5 0 5 units lattice
+create_box 1 box
+create_atoms 1 box
+
+# Define EAM potential for Cu
+pair_style eam
+pair_coeff * * Cu_u3.eam 
+
+# Apply strain
+variable strain equal 0.04  # Set small strain value
+variable deform_xx equal 1.0+v_strain
+variable deform_yy equal 1.0
+variable deform_zz equal 1.0
+
+change_box all x scale ${deform_xx} y scale ${deform_yy} z scale ${deform_zz} remap
+
+# **REMOVE FIX BOX/RELAX**
+# fix 1 all box/relax iso 0.1 vmax 0.001  (❌ REMOVE THIS LINE)
+
+# Minimize Energy
+min_style cg
+minimize 1.0e-8 1.0e-10 5000 10000  
+
+# Output results
+thermo 10
+thermo_style custom step pe lx ly lz press etotal
+write_data fcc_deformed.data

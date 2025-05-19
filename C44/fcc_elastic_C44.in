@@ -1,0 +1,35 @@
+# Lattice Energy Minimization for FCC Copper with Shear Strain
+units metal
+dimension 3
+boundary p p p
+atom_style atomic
+
+variable a equal 3.61  # Optimized lattice constant
+lattice fcc ${a}
+region box block 0 5 0 5 0 5 units lattice
+create_box 1 box
+create_atoms 1 box
+
+# Define EAM potential for Cu
+pair_style eam
+pair_coeff * * Cu_u3.eam 
+
+# Convert box to triclinic (important for shear deformation)
+change_box all triclinic
+
+# Apply shear strain
+variable strain equal 0.09  # Change manually for different runs
+variable deform_xy equal v_strain
+variable deform_xz equal 0.0
+variable deform_yz equal 0.0
+
+change_box all xy delta ${deform_xy} xz delta ${deform_xz} yz delta ${deform_yz} remap
+
+# Relaxation step
+fix 1 all box/relax aniso 0.1 vmax 0.001  # aniso instead of iso for shear strain
+min_style cg
+minimize 1.0e-8 1.0e-10 5000 10000  
+
+thermo 10
+thermo_style custom step pe lx ly lz press etotal
+write_data fcc_shear_deformed.data
