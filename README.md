@@ -1,12 +1,4 @@
 
----
-
-### ✅ Final Clean Bash Command (Proper Block Render on GitHub)
-
-Here is the **correct one-shot command** that you can use to generate a beautiful, properly rendered `README.md`:
-
-```bash
-cat << 'EOF' > README.md
 # Atomistic Simulation of FCC Copper Elastic Constants
 
 This repository presents a complete workflow for simulating and analyzing the **elastic constants (C11, C12, C44)** of **FCC copper** using **atomistic simulations**. The simulations are run using **LAMMPS**, and the data is postprocessed with **Python** to extract mechanical properties via energy-strain fitting.
