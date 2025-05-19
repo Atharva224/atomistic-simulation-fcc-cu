@@ -1,4 +1,3 @@
-
 # Atomistic Simulation of FCC Copper Elastic Constants
 
 This repository presents a complete workflow for simulating and analyzing the **elastic constants (C11, C12, C44)** of **FCC copper** using **atomistic simulations**. The simulations are run using **LAMMPS**, and the data is postprocessed with **Python** to extract mechanical properties via energy-strain fitting.
@@ -112,3 +111,39 @@ This project is provided for educational and academic use only.
 **Atharva Sinnarkar**  
 M.Sc. Computational Engineering, FAU Erlangen-Nürnberg  
 📧 [atharvasinnarkar@gmail.com](mailto:atharvasinnarkar@gmail.com)
+---
+
+## 🧪 SCC Copper Lattice Minimization & Fitting
+
+The `scc_minimize` folder includes:
+
+- `sc_minimize.in`: A basic LAMMPS input script to minimize the lattice energy of simple cubic (SC) copper.
+- `sc_multiple_lattice_constants.py`: Automates LAMMPS runs across a range of SC lattice constants.
+- `sc_pair of_lattice constant-energy_from log files.py`: Extracts `E_pair` values from multiple LAMMPS log files.
+- `3_2 Curve fit for SCC.py`: Performs quadratic fitting of potential energy vs. lattice constant to estimate equilibrium values.
+
+### 🔄 Example Workflow:
+
+**1. Run single SC relaxation:**
+```bash
+lmp -in sc_minimize.in
+```
+
+**2. Perform batch runs across lattice constants:**
+```bash
+python sc_multiple_lattice_constants.py
+```
+
+**3. Extract `E_pair` values from log files:**
+```bash
+python "sc_pair of_lattice constant-energy_from log files.py"
+```
+
+**4. Fit quadratic curve and visualize:**
+```bash
+python "3_2 Curve fit for SCC.py"
+```
+
+Outputs include:
+- `sc_energy_vs_lattice.txt`: Raw lattice constant vs energy data.
+- `sc_quadratic_fit_highres.png`: Plot of fitted curve.
