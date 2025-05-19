@@ -22,9 +22,6 @@ atomistic-simulation-fcc-copper-elastic-constants/
 │
 ├── Task 3.6/                           # Optional: Quadratic strain energy validation
 │
-├── env/                                # Conda/virtualenv environment (if used)
-├── ATOMISTIC.zip                       # Zipped potential/code files (backup or original)
-├── LAMMPS-64bit-stable.exe             # Windows LAMMPS installer
 └── README.md
 ```
 
