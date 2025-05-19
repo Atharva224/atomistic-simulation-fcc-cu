@@ -23,7 +23,22 @@ atomistic-simulation-fcc-copper-elastic-constants/
 │
 ├── Task 3.6/                           # Optional: Quadratic strain energy validation
 │
-├── env/                                # Conda/virtualenv environment (if used)
-├── ATOMISTIC.zip                       # Zipped potential/code files (backup or original)
-├── LAMMPS-64bit-stable.exe             # Windows LAMMPS installer
 └── README.md
+
+
+📘 Project Overview
+Simulation Tool: LAMMPS
+
+Postprocessing: Python (numpy, matplotlib, scipy)
+
+Material: FCC Copper (Cu)
+
+Objective: Compute C11, C12, and C44 from energy-strain relationships
+
+✅ Getting Started
+Prerequisites
+Python 3.7+
+LAMMPS installed and in your PATH
+
+Python packages:
+pip install numpy matplotlib scipy
