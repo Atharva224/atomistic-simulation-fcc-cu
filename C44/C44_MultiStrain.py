@@ -26,29 +26,5 @@ region box block 0 5 0 5 0 5 units lattice
 create_box 1 box
 create_atoms 1 box
 
-pair_style eam
-pair_coeff * * Cu_u3.eam
-
-# Enable triclinic box for shear
-change_box all triclinic
-
-# Apply shear strain in xy direction
-variable strain equal {strain}
-change_box all xy delta ${{strain}} remap
-
-# Relax atoms (not the box)
-fix 1 all box/relax xy 0.0 vmax 0.001
-
-min_style cg
-minimize 1.0e-8 1.0e-10 5000 10000
-
-thermo 10
-thermo_style custom step pe vol  # Added volume (vol)
-
-write_data C44_strained_{strain_label}.lmp
-""")
-
-    # Run LAMMPS simulation for this strain
-    subprocess.run([LAMMPS_EXE, "-in", input_filename], stdout=open(log_filename, "w"))
-
+#Keeping the original work safe. Email atharvasinnarkar@gmail.com for the file and mention the proper usecase.
 
