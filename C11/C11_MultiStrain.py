@@ -33,27 +33,4 @@ region box block 0 5 0 5 0 5 units lattice
 create_box 1 box
 create_atoms 1 box
 
-pair_style eam
-pair_coeff * * Cu_u3.eam
-
-# Apply uniaxial strain in x-direction
-variable strain equal {strain}
-variable deform_xx equal {deform_xx}
-variable deform_yy equal {deform_yy}
-variable deform_zz equal {deform_zz}
-
-change_box all x scale ${{deform_xx}} y scale ${{deform_yy}} z scale ${{deform_zz}} remap
-
-# Relaxation
-fix 1 all box/relax aniso 0.1 vmax 0.001
-min_style cg
-minimize 1.0e-8 1.0e-10 5000 10000
-
-# Output
-thermo_style custom step pe
-thermo 1
-write_data C11_uniaxial_strained_{strain_label}.lmp
-""")
-
-    # Run the simulation and save the log
-    subprocess.run([LAMMPS_EXE, "-in", input_filename], stdout=open(log_filename, "w"))
+#Keeping the original work safe. Email atharvasinnarkar@gmail.com for the file and mention the proper usecase.
