@@ -30,32 +30,4 @@ dimension 3
 boundary p p p
 atom_style atomic
 
-variable a equal {lattice_constant}
-lattice fcc ${{a}}
-region box block 0 5 0 5 0 5 units lattice
-create_box 1 box
-create_atoms 1 box
-
-pair_style eam
-pair_coeff * * Cu_u3.eam
-
-variable strain equal {strain}
-variable deform_xx equal {deform_xx}
-variable deform_yy equal {deform_yy}
-
-# Apply biaxial strain (z-direction remains unchanged)
-change_box all x scale ${{deform_xx}} y scale ${{deform_yy}} remap
-
-fix 1 all box/relax iso 0.1 vmax 0.001
-min_style cg
-minimize 1.0e-8 1.0e-10 5000 10000
-
-thermo_style custom step pe vol
-
-thermo 1
-
-write_data C12_strained_{strain_label}.lmp
-""")
-
-    # Run the simulation
-    subprocess.run([LAMMPS_EXE, "-in", input_filename], stdout=open(log_filename, "w"))
+#Keeping the original work safe. Email atharvasinnarkar@gmail.com for the file and mention the proper usecase.
